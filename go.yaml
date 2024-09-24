@@ -1,0 +1,17 @@
+name: Go
+
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+    branches: [$default-branch]
+
+jobs:
+  deploy:
+    - name: Hello
+      uses: dagger/dagger-for-github@v6
+      with:
+        verb: call
+        module: github.com/shykes/daggerverse/hello
+        args: hello --greeting Hola --name Jeremy
+        cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
