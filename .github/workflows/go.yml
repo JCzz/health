@@ -1,8 +1,6 @@
 name: Go
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-
+run-name: Go build 🚀
 on: [push, pull_request]
-
 jobs:
   deploy:
     name: Hello  # Properly indented 'name'
