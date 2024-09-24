@@ -1,12 +1,23 @@
-name: Go
-run-name: Go build 🚀
-on: [push]
+name: dagger
+on:
+  push:
+    branches: [main]
+
 jobs:
-  deploy:
-    name: Hello  # Properly indented 'name'
-    uses: dagger/dagger-for-github@v6
-    with:
-      verb: call
-      module: github.com/shykes/daggerverse/hello
-      args: hello --greeting Hola --name Jeremy
-      cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+  hello:
+    name: hello
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Call Dagger Function
+        uses: dagger/dagger-for-github@v6
+        with:
+          version: "latest"
+          verb: call
+          # modify to use different function(s) as needed
+          module: github.com/shykes/daggerverse/hello@v0.1.2
+          args: hello --greeting="bonjour" --name="monde"
+          # assumes the Dagger Cloud token is in
+          # a repository secret named DAGGER_CLOUD_TOKEN
+          # set via the GitHub UI/CLI
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
