@@ -8,7 +8,8 @@ on:
 
 jobs:
   deploy:
-    uses: dagger/dagger-for-github/.github/workflows/deploy.yaml@v6
+- name: Hello
+    uses: dagger/dagger-for-github@v6
     with:
       verb: call
       module: github.com/shykes/daggerverse/hello
