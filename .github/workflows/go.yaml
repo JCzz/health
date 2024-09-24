@@ -1,5 +1,6 @@
 name: Go
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
 on:
   push:
     branches: [$default-branch]
@@ -8,7 +9,7 @@ on:
 
 jobs:
   deploy:
-- name: Hello
+    name: Hello  # Properly indented 'name'
     uses: dagger/dagger-for-github@v6
     with:
       verb: call
